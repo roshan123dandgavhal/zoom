@@ -78,7 +78,7 @@ class ZoomApi extends DB{
 				CURLOPT_SSL_VERIFYHOST=> 0,  
 				CURLOPT_SSL_VERIFYPEER=> 0,
 				CURLOPT_HTTPHEADER => array(
-					"Authorization: Bearer ".ZoomApi::$loc_token
+					"Authorization: Bearer ".self::$loc_token
 				),
 			)
 		);
@@ -87,10 +87,13 @@ class ZoomApi extends DB{
 		curl_close($ch);
 
 		$someArray = json_decode($result, true);
+
+		//echo __FUNCTION__;
+		//echo __CLASS__.'::'.__FUNCTION__; exit;
 		
 		if(isset($someArray['code']) && $someArray['code'] == 124) {
-			ZoomApi::refreshToken();
-			__FUNCTION__;
+			self::refreshToken();
+			call_user_func(__CLASS__.'::'.__FUNCTION__);
 		} else {
 			echo "<pre>";
 			print_r($someArray);
@@ -127,7 +130,7 @@ class ZoomApi extends DB{
 	    curl_setopt ($ch, CURLOPT_POST, true);
 	    curl_setopt ($ch, CURLOPT_HEADER, false);
 	    curl_setopt ($ch, CURLOPT_URL, $curl_post_url);
-	    curl_setopt ($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".ZoomApi::$loc_token,'Content-Type: application/json'));
+	    curl_setopt ($ch, CURLOPT_HTTPHEADER, array("Authorization: Bearer ".self::$loc_token,'Content-Type: application/json'));
 	    curl_setopt ($ch, CURLOPT_POSTFIELDS, $postdata);
 	    curl_setopt ($ch, CURLOPT_TIMEOUT, 0);
 	    $result = curl_exec($ch);
@@ -136,8 +139,8 @@ class ZoomApi extends DB{
 	    $someArray = json_decode($result, true);
 		
 		if(isset($someArray['code']) && $someArray['code'] == 124) {
-			ZoomApi::refreshToken();
-			__FUNCTION__;
+			self::refreshToken();
+			call_user_func(__CLASS__.'::'.__FUNCTION__);
 		} else {
 			echo "<pre>";
 			print_r($someArray);
@@ -167,7 +170,7 @@ class ZoomApi extends DB{
 				CURLOPT_SSL_VERIFYHOST=> 0,  
 				CURLOPT_SSL_VERIFYPEER=> 0,
 				CURLOPT_HTTPHEADER => array(
-					"Authorization: Bearer ".ZoomApi::$loc_token
+					"Authorization: Bearer ".self::$loc_token
 				),
 			)
 		);
@@ -178,8 +181,8 @@ class ZoomApi extends DB{
 		$someArray = json_decode($result, true);
 
 		if(isset($someArray['code']) && $someArray['code'] == 124) {
-			ZoomApi::refreshToken();
-			__FUNCTION__;
+			self::refreshToken();
+			call_user_func(__CLASS__.'::'.__FUNCTION__);
 		} else {
 			echo "<pre>";
 			print_r($someArray);
