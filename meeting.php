@@ -47,14 +47,24 @@ class ZoomApi extends DB{
 	    curl_close($ch);
 	    $someArray = json_decode($result, true);
 
-	    //echo "<pre>";
-	    //print_r($someArray); exit();
+	    
 
-	    $token = $someArray['access_token'];
-	    $refresh_token = $someArray['refresh_token'];
-	    $db->update_access_token($token, $refresh_token);
+	    if(isset($someArray['access_token'])) {
 
-	    return 1;
+	    	$token = $someArray['access_token'];
+		    $refresh_token = $someArray['refresh_token'];
+		    $db->update_access_token($token, $refresh_token);
+		    self::$loc_token = $token;
+
+		    return 1;
+	    } else {
+
+	    	return 0;
+	    }
+	    echo "<pre>";
+	   print_r($someArray); exit();
+
+	    
 	    //exit;
 	}
 
@@ -284,6 +294,7 @@ class ZoomApi extends DB{
 		
 		exit();
 	}
+
 }
 
 new ZoomApi();
@@ -293,11 +304,11 @@ if (isset($_GET['callbackaction']) && $_GET['callbackaction'] == "createMeeting"
 if (isset($_GET['callbackaction']) && $_GET['callbackaction'] == "getMeetingList") { ZoomApi::getMeetingList(); }
 
 $updatearray = array(
-		        "topic" => "Wellness Activity UPDATED",
+		        "topic" => "UPDATED Meeting Topic",
 		        "type" => 2,
-		        "start_time" => "2020-08-05T20:30:00",
+		        "start_time" => "2020-08-05T20:30:00", //updates date time
 		        "duration" => "30", // 30 mins
-		        "password" => "123456",
+		        "password" => "123456", //updated password
 		        "timezone" => 'Asia/Kolkata'
 	    	);
 
