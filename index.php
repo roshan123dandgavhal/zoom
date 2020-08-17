@@ -11,5 +11,7 @@ if($db->is_table_empty()) {
 	<a href="meeting.php?callbackaction=getProfile" target="_blank">Get My Profile</a><br/>
 	<a href="meeting.php?callbackaction=createMeeting" target="_blank">Create Meeting</a></br/>
 	<a href="meeting.php?callbackaction=getMeetingList" target="_blank">Get List Of Meeting</a></br>
+	<a href="meeting.php?callbackaction=getMeetingDetails" target="_blank">Get Meeting Details</a></br>
+	<a href="meeting.php?callbackaction=getMeetingParticipants" target="_blank">Get List Of Participants</a></br>
 <?php }
 ?>
