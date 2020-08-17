@@ -2,7 +2,7 @@
 Zoom Implementation
 Implement Zoom API with PHP
 
-First Login zoom.us using your login creditioanl
+First Login zoom.us using your login credentials.
 
 Then Goto
 https://marketplace.zoom.us
@@ -11,7 +11,7 @@ Create App
 
 Choose your app type = OAuth
 
-After Create App You will get CLIENT ID and CLIENT SECRET KEY. SAve thse detail to notepad for api use.
+After Create App You will get CLIENT ID and CLIENT SECRET KEY. Save thse detail to notepad for api use.
 Sample details for create APP
 
 USE CLIENT ID and CLIENT SECRET KEY in config.php file
